@@ -14,6 +14,7 @@ import TopAppBar, {
 import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader, DrawerTitle } from '@material/react-drawer';
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
+import Brands from './Components/Brands';
 
 class App extends Component {
     state = {
@@ -39,7 +40,7 @@ class App extends Component {
         switch (this.state.selectedIndex) {
             case 0:
                 return (
-                    <p>Brands</p>
+                    <Brands/>
                 );
             case 1:
                 return (
