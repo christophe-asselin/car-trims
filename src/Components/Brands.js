@@ -1,59 +1,33 @@
 import React from 'react';
+import {Grid, Row} from '@material/react-layout-grid';
+import '@material/react-layout-grid/dist/layout-grid.css';
+import BrandTile from './BrandTile';
 
 const brands = [
-    { name: 'Honda', logoLink: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Toyota', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1665.png' },
-    { name: 'Ford', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1666.png' },
-    { name: 'Chevrolet', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1644.png' },
-    { name: 'Jeep', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1648.png' },
-    { name: 'Mercedes-Benz', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1655.png' },
-    { name: 'BMW', logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1641.png' },
-    { name: "Porsche", logoLink: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1663.png' }
+    { name: 'Honda', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'Toyota', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1665.png' },
+    { name: 'Ford', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1666.png' },
+    { name: 'Chevrolet', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1644.png' },
+    { name: 'Jeep', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1648.png' },
+    { name: 'Mercedes-Benz', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1655.png' },
+    { name: 'BMW', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1641.png' },
+    { name: "Porsche", logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1663.png' }
 ];
 
-const renderImageList = () => {
+const renderImageTiles = () => {
     return brands.map((brand) => (
-        <div style={getListElementStyle(brand.logoLink)}>
-            <span style={getTileLabelStyle()}>{brand.name}</span>
-        </div>
+        <BrandTile name={brand.name} logoUrl={brand.logoUrl}/>
     ));
-};
-
-const getListStyle = () => {
-    return {
-        'display': 'flex',
-        'flex-direction': 'row',
-        'flex-wrap': 'wrap'
-    };
-};
-
-const getListElementStyle = (link) => {
-    return {
-        backgroundImage: 'url(' + link + ')',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundSize: 'contain',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        margin: '5px',
-        borderRadius: 5 + 'px',
-        width: 200 + 'px',
-        height: 200 + 'px'
-    };
-};
-
-const getTileLabelStyle = () => {
-    return {
-        backgroundColor: '#80808080',
-        verticalAlign: 'bottom'
-    };
 };
 
 export default function Brands() {
     return (
-        <div style={getListStyle()}>
-            {renderImageList()}
+        <div>
+            <Grid>
+                <Row>
+                    {renderImageTiles()}
+                </Row>
+            </Grid>
         </div>
     )
 }
