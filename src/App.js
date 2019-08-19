@@ -29,6 +29,13 @@ class App extends Component {
         });
     }
 
+    onTitleClick = () => {
+        this.setState({
+            selectedIndex: 0,
+            open: false
+        });
+    }
+
     handleSelect = (selectedIndex) => {
         this.setState({
             selectedIndex: selectedIndex,
@@ -38,25 +45,25 @@ class App extends Component {
 
     renderPage = () => {
         switch (this.state.selectedIndex) {
-            case 0:
+            case 1:
                 return (
                     <Brands/>
                 );
-            case 1:
+            case 2:
                 return (
                     <p>Models</p>
                 );
-            case 2:
+            case 3:
                 return (
                     <p>Trims</p>
                 );
-            case 3:
+            case 4:
                 return (
                     <p>About</p>
                 );
             default:
                 return (
-                    <p>Brands</p>
+                    <p>Home</p>
                 );
         }
     }
@@ -71,7 +78,10 @@ class App extends Component {
                             <TopAppBarIcon navIcon tabIndex={0}>
                                 <MaterialIcon hasRipple icon='menu' onClick={this.toggle} />
                             </TopAppBarIcon>
-                            <TopAppBarTitle>CarTrims.info</TopAppBarTitle>
+                            <TopAppBarTitle
+                            onClick={this.onTitleClick}
+                            style={{cursor: 'pointer'}}
+                            >CarTrims.info</TopAppBarTitle>
                         </TopAppBarSection>
                     </TopAppBarRow>
                 </TopAppBar>
@@ -90,6 +100,10 @@ class App extends Component {
                             selectedIndex={this.state.selectedIndex}
                             handleSelect={this.handleSelect}
                             >
+                                <ListItem>
+                                    <ListItemGraphic graphic={<MaterialIcon icon='home' />} />
+                                    <ListItemText primaryText='Home' />
+                                </ListItem>
                                 <ListItem>
                                     <ListItemGraphic graphic={<MaterialIcon icon='directions_car' />} />
                                     <ListItemText primaryText='Brands' />
