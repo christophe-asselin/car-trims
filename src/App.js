@@ -35,6 +35,31 @@ class App extends Component {
         });
     }
 
+    renderPage = () => {
+        switch (this.state.selectedIndex) {
+            case 0:
+                return (
+                    <p>Brands</p>
+                );
+            case 1:
+                return (
+                    <p>Models</p>
+                );
+            case 2:
+                return (
+                    <p>Trims</p>
+                );
+            case 3:
+                return (
+                    <p>About</p>
+                );
+            default:
+                return (
+                    <p>Brands</p>
+                );
+        }
+    }
+
     render() {
         return (
             <div className='drawer-container'>
@@ -85,7 +110,7 @@ class App extends Component {
                     </Drawer>
 
                     <DrawerAppContent className='drawer-app-content'>
-                        Your content
+                        {this.renderPage()}
                     </DrawerAppContent>
                 </TopAppBarFixedAdjust>
             </div>
