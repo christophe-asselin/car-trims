@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import "@material/react-drawer/dist/drawer.css";
 import '@material/react-top-app-bar/dist/top-app-bar.css';
 import '@material/react-material-icon/dist/material-icon.css';
