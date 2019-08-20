@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/christophe-asselin/car-trims/static/css/main.25ab1c48.chunk.css",
+    "main.js": "/christophe-asselin/car-trims/static/js/main.29ca7d95.chunk.js",
+    "main.js.map": "/christophe-asselin/car-trims/static/js/main.29ca7d95.chunk.js.map",
+    "runtime~main.js": "/christophe-asselin/car-trims/static/js/runtime~main.e5ce7b84.js",
+    "runtime~main.js.map": "/christophe-asselin/car-trims/static/js/runtime~main.e5ce7b84.js.map",
+    "static/css/2.7af277c2.chunk.css": "/christophe-asselin/car-trims/static/css/2.7af277c2.chunk.css",
+    "static/js/2.083cf760.chunk.js": "/christophe-asselin/car-trims/static/js/2.083cf760.chunk.js",
+    "static/js/2.083cf760.chunk.js.map": "/christophe-asselin/car-trims/static/js/2.083cf760.chunk.js.map",
+    "index.html": "/christophe-asselin/car-trims/index.html",
+    "precache-manifest.b52ba73acf2ba1ef1f47d28e92e644fe.js": "/christophe-asselin/car-trims/precache-manifest.b52ba73acf2ba1ef1f47d28e92e644fe.js",
+    "service-worker.js": "/christophe-asselin/car-trims/service-worker.js",
+    "static/css/2.7af277c2.chunk.css.map": "/christophe-asselin/car-trims/static/css/2.7af277c2.chunk.css.map",
+    "static/css/main.25ab1c48.chunk.css.map": "/christophe-asselin/car-trims/static/css/main.25ab1c48.chunk.css.map",
+    "static/media/car_background.jpg": "/christophe-asselin/car-trims/static/media/car_background.0a1d8fb0.jpg"
+  }
+}
