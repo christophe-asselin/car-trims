@@ -51,7 +51,7 @@ class App extends Component {
             case 2:
                 return (<p>Models</p>);
             case 3:
-                return (<p>Trims</p>);
+                return (<p>Trim Levels</p>);
             case 4:
                 return (<p>About</p>);
             default:
@@ -79,11 +79,11 @@ class App extends Component {
 
                 <TopAppBarFixedAdjust className='top-app-bar-fix-adjust'>
                     <Drawer modal open={this.state.open}>
-                        <DrawerHeader>
+                        {/* <DrawerHeader>
                             <DrawerTitle tag='h2'>
                                 Site Map
                             </DrawerTitle>
-                        </DrawerHeader>
+                        </DrawerHeader> */}
 
                         <DrawerContent>
                             <List
@@ -105,7 +105,7 @@ class App extends Component {
                                 </ListItem>
                                 <ListItem>
                                     <ListItemGraphic graphic={<MaterialIcon icon='attach_money' />} />
-                                    <ListItemText primaryText='Trims' />
+                                    <ListItemText primaryText='Trim Levels' />
                                 </ListItem>
                                 <ListItem>
                                     <ListItemGraphic graphic={<MaterialIcon icon='alternate_email' />} />
