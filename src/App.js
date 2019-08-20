@@ -40,7 +40,7 @@ class App extends Component {
     handleSelect = (selectedIndex) => {
         this.setState({
             selectedIndex: selectedIndex,
-            open: this.state.open
+            open: false
         });
     }
 
