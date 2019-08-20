@@ -15,6 +15,7 @@ import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader, DrawerTitle } fr
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
 import Brands from './Components/Brands';
+import HomePage from './Components/HomePage';
 
 class App extends Component {
     state = {
@@ -46,25 +47,15 @@ class App extends Component {
     renderPage = () => {
         switch (this.state.selectedIndex) {
             case 1:
-                return (
-                    <Brands/>
-                );
+                return (<Brands/>);
             case 2:
-                return (
-                    <p>Models</p>
-                );
+                return (<p>Models</p>);
             case 3:
-                return (
-                    <p>Trims</p>
-                );
+                return (<p>Trims</p>);
             case 4:
-                return (
-                    <p>About</p>
-                );
+                return (<p>About</p>);
             default:
-                return (
-                    <p>Home</p>
-                );
+                return (<HomePage/>);
         }
     }
 
@@ -72,7 +63,7 @@ class App extends Component {
         return (
             <div className='drawer-container'>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-                <TopAppBar>
+                <TopAppBar className='elevation-z2'>
                     <TopAppBarRow>
                         <TopAppBarSection align='start'>
                             <TopAppBarIcon navIcon tabIndex={0}>
@@ -87,7 +78,7 @@ class App extends Component {
                 </TopAppBar>
 
                 <TopAppBarFixedAdjust className='top-app-bar-fix-adjust'>
-                    <Drawer dismissible open={this.state.open}>
+                    <Drawer modal open={this.state.open}>
                         <DrawerHeader>
                             <DrawerTitle tag='h2'>
                                 Site Map
