@@ -16,7 +16,7 @@ const brands = [
 
 const renderImageTiles = () => {
     return brands.map((brand) => (
-        <BrandTile name={brand.name} logoUrl={brand.logoUrl}/>
+        <BrandTile key={brand.name} name={brand.name} logoUrl={brand.logoUrl}/>
     ));
 };
 
