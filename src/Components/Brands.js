@@ -1,34 +1,48 @@
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Grid, Row} from '@material/react-layout-grid';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import BrandTile from './BrandTile';
 
 const brands = [
     { name: 'Honda', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Toyota', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1665.png' },
-    { name: 'Ford', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1666.png' },
-    { name: 'Chevrolet', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1644.png' },
-    { name: 'Jeep', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1648.png' },
-    { name: 'Mercedes-Benz', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1655.png' },
-    { name: 'BMW', logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1641.png' },
-    { name: "Porsche", logoUrl: 'http://pngimg.com/uploads/car_logo/car_logo_PNG1663.png' }
+    { name: 'Toyota', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'Ford', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'Chevrolet', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'Jeep', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'Mercedes-Benz', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: 'BMW', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
+    { name: "Porsche", logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' }
 ];
 
-const renderImageTiles = () => {
-    return brands.map((brand) => (
-        <BrandTile key={brand.name} name={brand.name} logoUrl={brand.logoUrl}/>
-    ));
-};
+export class Brands extends Component {
+    
+    renderImageTiles = () => {
+        return brands.map((brand) => (
+            <BrandTile
+            key={brand.name}
+            name={brand.name}
+            logoUrl={brand.logoUrl}
+            handleClick={this.props.handleBrandSelect}/>
+        ));
+    };
 
-export default function Brands() {
-    return (
-        <div>
-            <Grid>
-                <Row>
-                    {renderImageTiles()}
-                </Row>
-            </Grid>
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                <Grid>
+                    <Row>
+                        {this.renderImageTiles()}
+                    </Row>
+                </Grid>
+            </div>
+        )
+    }
 }
+
+Brands.propTypes = {
+    handleBrandSelect: PropTypes.func.isRequired
+}
+
+export default Brands;
 

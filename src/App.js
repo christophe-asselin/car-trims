@@ -11,48 +11,59 @@ import TopAppBar, {
     TopAppBarSection,
     TopAppBarTitle,
   } from '@material/react-top-app-bar';
-import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader, DrawerTitle } from '@material/react-drawer';
+import Drawer, { DrawerAppContent, DrawerContent } from '@material/react-drawer';
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
 import Brands from './Components/Brands';
 import HomePage from './Components/HomePage';
+import CarModels from './Components/CarModels';
 
 class App extends Component {
     state = {
         selectedIndex: 0,
-        open: false
+        open: false,
+        selectedBrand: ''
     };
 
     toggle = () => {
         this.setState({
             selectedIndex: this.state.selectedIndex,
-            open: !this.state.open
+            open: !this.state.open,
+            selectedBrand: this.state.selectedBrand
         });
-    }
+    };
 
     onTitleClick = () => {
         this.setState({
             selectedIndex: 0,
-            open: false
+            open: false,
+            selectedBrand: ''
         });
-    }
+    };
 
     handleSelect = (selectedIndex) => {
         this.setState({
             selectedIndex: selectedIndex,
-            open: false
+            open: false,
+            selectedBrand: ''
         });
-    }
+    };
+
+    handleBrandSelect = (brand) => {
+        this.setState({
+            selectedIndex: 2,
+            open: false,
+            selectedBrand: brand
+        });
+    };
 
     renderPage = () => {
         switch (this.state.selectedIndex) {
             case 1:
-                return (<Brands/>);
+                return (<Brands handleBrandSelect={this.handleBrandSelect}/>);
             case 2:
-                return (<p>Models</p>);
+                return (<CarModels brand={this.state.selectedBrand}/>);
             case 3:
-                return (<p>Trim Levels</p>);
-            case 4:
                 return (<p>About</p>);
             default:
                 return (<HomePage/>);
@@ -79,12 +90,6 @@ class App extends Component {
 
                 <TopAppBarFixedAdjust className='top-app-bar-fix-adjust'>
                     <Drawer modal open={this.state.open}>
-                        {/* <DrawerHeader>
-                            <DrawerTitle tag='h2'>
-                                Site Map
-                            </DrawerTitle>
-                        </DrawerHeader> */}
-
                         <DrawerContent>
                             <List
                             singleSelection
@@ -102,10 +107,6 @@ class App extends Component {
                                 <ListItem>
                                     <ListItemGraphic graphic={<MaterialIcon icon='filter_list' />} />
                                     <ListItemText primaryText='Models' />
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemGraphic graphic={<MaterialIcon icon='attach_money' />} />
-                                    <ListItemText primaryText='Trim Levels' />
                                 </ListItem>
                                 <ListItem>
                                     <ListItemGraphic graphic={<MaterialIcon icon='alternate_email' />} />

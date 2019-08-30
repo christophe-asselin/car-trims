@@ -32,7 +32,8 @@ export class BrandTile extends Component {
             <Cell
             columns='2'
             className='tile'
-            style={this.listElementStyle}>
+            style={this.listElementStyle}
+            onClick={() => this.props.handleClick(this.props.name)}>
                 <span style={this.tileLabelStyle}>{this.props.name}</span>
             </Cell>
         )
@@ -42,7 +43,8 @@ export class BrandTile extends Component {
 // propTypes
 BrandTile.propTypes = {
     name: PropTypes.string.isRequired,
-    logoUrl: PropTypes.string.isRequired
+    logoUrl: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired
 }
 
 export default BrandTile;
