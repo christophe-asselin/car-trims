@@ -17,19 +17,24 @@ import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-l
 import Brands from './Components/Brands';
 import HomePage from './Components/HomePage';
 import CarModels from './Components/CarModels';
+import CarTrims from './Components/CarTrims';
 
 class App extends Component {
     state = {
         selectedIndex: 0,
         open: false,
-        selectedBrand: ''
+        selectedBrand: '',
+        selectedModel: '',
+        selectedGeneration: -1
     };
 
     toggle = () => {
         this.setState({
             selectedIndex: this.state.selectedIndex,
             open: !this.state.open,
-            selectedBrand: this.state.selectedBrand
+            selectedBrand: this.state.selectedBrand,
+            selectedModel: this.state.selectedModel,
+            selectedGeneration: this.state.selectedGeneration
         });
     };
 
@@ -37,7 +42,9 @@ class App extends Component {
         this.setState({
             selectedIndex: 0,
             open: false,
-            selectedBrand: ''
+            selectedBrand: '',
+            selectedModel: '',
+            selectedGeneration: -1
         });
     };
 
@@ -45,7 +52,9 @@ class App extends Component {
         this.setState({
             selectedIndex: selectedIndex,
             open: false,
-            selectedBrand: ''
+            selectedBrand: '',
+            selectedModel: '',
+            selectedGeneration: -1
         });
     };
 
@@ -53,17 +62,37 @@ class App extends Component {
         this.setState({
             selectedIndex: 2,
             open: false,
-            selectedBrand: brand
+            selectedBrand: brand,
+            selectedModel: '',
+            selectedGeneration: -1
         });
     };
+
+    handleModelSelect = (model, brand, generation) => {
+        this.setState({
+            selectedIndex: 3,
+            open: false,
+            selectedBrand: brand,
+            selectedModel: model,
+            selectedGeneration: generation
+        });
+    }
 
     renderPage = () => {
         switch (this.state.selectedIndex) {
             case 1:
                 return (<Brands handleBrandSelect={this.handleBrandSelect}/>);
             case 2:
-                return (<CarModels brand={this.state.selectedBrand}/>);
+                return (<CarModels brand={this.state.selectedBrand} handleModelSelect={this.handleModelSelect}/>);
             case 3:
+                return (
+                    <CarTrims
+                    brand={this.state.selectedBrand}
+                    model={this.state.selectedModel}
+                    generation={this.state.selectedGeneration}
+                    />
+                );
+            case 4:
                 return (<p>About</p>);
             default:
                 return (<HomePage/>);
@@ -109,7 +138,11 @@ class App extends Component {
                                     <ListItemText primaryText='Models' />
                                 </ListItem>
                                 <ListItem>
-                                    <ListItemGraphic graphic={<MaterialIcon icon='alternate_email' />} />
+                                    <ListItemGraphic graphic={<MaterialIcon icon='attach_money' />} />
+                                    <ListItemText primaryText='Trims' />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemGraphic graphic={<MaterialIcon icon='info' />} />
                                     <ListItemText primaryText='About' />
                                 </ListItem>
                             </List>

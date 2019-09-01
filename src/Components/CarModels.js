@@ -17,6 +17,7 @@ export class CarModels extends Component {
             <CarModelTile
             key={`${model.brand}-${model.model}-${model.generation}`}
             modelInfo={model}
+            handleClick={this.props.handleModelSelect}
             />
         ));
     };
@@ -35,7 +36,8 @@ export class CarModels extends Component {
 }
 
 CarModels.propTypes = {
-    brand: PropTypes.string.isRequired
-}
+    brand: PropTypes.string.isRequired,
+    handleModelSelect: PropTypes.func.isRequired
+};
 
 export default CarModels;

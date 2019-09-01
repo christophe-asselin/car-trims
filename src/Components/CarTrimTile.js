@@ -10,19 +10,16 @@ import '@material/react-card/dist/card.css';
 import { Headline6, Subtitle2 } from '@material/react-typography';
 import '@material/react-typography/dist/typography.css';
 
-export class CarModelTile extends Component {
+export class CarTrimTile extends Component {
     render() {
         return (
             <Cell columns='2'>
-                <Card
-                onClick={() =>
-                    this.props.handleClick(this.props.modelInfo.model, this.props.modelInfo.brand, this.props.modelInfo.generation)
-                }>
+                <Card>
                     <CardPrimaryContent>
                         <CardMedia wide imageUrl='https://st.motortrend.com/uploads/sites/10/2018/01/2018-Toyota-Corolla-ECO-front-three-quarter.jpg'/>
-                        <Headline6>{this.props.modelInfo.brand + ' ' + this.props.modelInfo.model}</Headline6>
+                        <Headline6>{`${this.props.trimInfo.brand} ${this.props.trimInfo.model} ${this.props.trimInfo.trim}`}</Headline6>
                         <Subtitle2>{
-                            `Gen. ${this.props.modelInfo.generation} (${this.props.modelInfo.startYear} - ${this.props.modelInfo.endYear})`
+                            `Gen. ${this.props.trimInfo.generation} (${this.props.trimInfo.startYear} - ${this.props.trimInfo.endYear})`
                         }</Subtitle2>
                     </CardPrimaryContent>
                 </Card>
@@ -32,9 +29,8 @@ export class CarModelTile extends Component {
 }
 
 // propTypes
-CarModelTile.propTypes = {
-    modelInfo: PropTypes.object.isRequired,
-    handleClick: PropTypes.func.isRequired
-}
+CarTrimTile.propTypes = {
+    trimInfo: PropTypes.object.isRequired
+};
 
-export default CarModelTile;
+export default CarTrimTile;
