@@ -8,13 +8,15 @@ import TrimInfoDetails from './TrimInfoDetails';
 
 export class TrimInfo extends Component {
 
-    style = {
-        width: '100%',
-        height: '100%',
-        visibility: this.props.visible,
-        position: 'absolute',
-        zIndex: 15,
-        backgroundColor: 'white'
+    getStyle = () => {
+        return {
+            width: '100%',
+            height: '100%',
+            visibility: this.props.visible,
+            position: 'absolute',
+            zIndex: 15,
+            backgroundColor: 'white'
+        };
     };
 
     backButtonContainerStyle = {position: 'absolute'};
@@ -46,7 +48,7 @@ export class TrimInfo extends Component {
 
     render() {
         return (
-            <div style={this.style}>
+            <div style={this.getStyle()}>
                 <div className='mdc-top-app-bar__section' style={this.backButtonContainerStyle}>
                     <MaterialIcon
                     className='mdc-top-app-bar__navigation-icon'
