@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/car-trims/static/css/main.25ab1c48.chunk.css",
-    "main.js": "/car-trims/static/js/main.93a8a796.chunk.js",
-    "main.js.map": "/car-trims/static/js/main.93a8a796.chunk.js.map",
+    "main.js": "/car-trims/static/js/main.62335f05.chunk.js",
+    "main.js.map": "/car-trims/static/js/main.62335f05.chunk.js.map",
     "runtime~main.js": "/car-trims/static/js/runtime~main.e1b5649f.js",
     "runtime~main.js.map": "/car-trims/static/js/runtime~main.e1b5649f.js.map",
     "static/css/2.95b38104.chunk.css": "/car-trims/static/css/2.95b38104.chunk.css",
     "static/js/2.773290e5.chunk.js": "/car-trims/static/js/2.773290e5.chunk.js",
     "static/js/2.773290e5.chunk.js.map": "/car-trims/static/js/2.773290e5.chunk.js.map",
     "index.html": "/car-trims/index.html",
-    "precache-manifest.23cea089c6f5f94bb429e9b85ef79589.js": "/car-trims/precache-manifest.23cea089c6f5f94bb429e9b85ef79589.js",
+    "precache-manifest.5be409a3dd31d89fbd50e6abd665d93d.js": "/car-trims/precache-manifest.5be409a3dd31d89fbd50e6abd665d93d.js",
     "service-worker.js": "/car-trims/service-worker.js",
     "static/css/2.95b38104.chunk.css.map": "/car-trims/static/css/2.95b38104.chunk.css.map",
     "static/css/main.25ab1c48.chunk.css.map": "/car-trims/static/css/main.25ab1c48.chunk.css.map",
