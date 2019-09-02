@@ -103,7 +103,7 @@ class App extends Component {
         return (
             <div className='drawer-container'>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-                <TopAppBar className='elevation-z2'>
+                <TopAppBar className='elevation-z2' style={{zIndex: 100}}>
                     <TopAppBarRow>
                         <TopAppBarSection align='start'>
                             <TopAppBarIcon navIcon tabIndex={0}>
