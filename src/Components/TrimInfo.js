@@ -13,8 +13,8 @@ export class TrimInfo extends Component {
             width: '100%',
             height: '100%',
             visibility: this.props.visible,
-            position: 'absolute',
-            zIndex: 15,
+            position: 'fixed',
+            zIndex: 2,
             backgroundColor: 'white'
         };
     };
