@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Grid, Row} from '@material/react-layout-grid';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import CarTrimTile from './CarTrimTile';
+import TrimInfo from './TrimInfo';
 
 const trims = [
     { brand: 'Honda', model: 'Civic', trim: 'Si', generation: 10, startYear: 2016, endYear: 2019 },
@@ -13,6 +14,12 @@ const trims = [
 ];
 
 export class CarTrims extends Component {
+    state = { trimInfoVisisble: 'hidden' }
+
+    showTrimInfo = () => this.setState({ trimInfoVisisble: 'visible' });
+
+    hideTrimInfo = () => this.setState({ trimInfoVisisble: 'hidden' });
+
     renderCarTrimTiles = () => {
         return trims.filter(
                 trim => this.props.model ?
@@ -22,6 +29,7 @@ export class CarTrims extends Component {
                 <CarTrimTile
                 key={`${trim.brand}-${trim.model}-${trim.generation}-${trim.trim}`}
                 trimInfo={trim}
+                onClick={this.showTrimInfo}
                 />
             )
         );
@@ -30,6 +38,10 @@ export class CarTrims extends Component {
     render() {
         return (
             <div>
+                <TrimInfo
+                id={0}
+                visible={this.state.trimInfoVisisble}
+                onClose={this.hideTrimInfo}/>
                 <Grid>
                     <Row>
                         {this.renderCarTrimTiles()}

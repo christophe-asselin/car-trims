@@ -14,7 +14,7 @@ export class CarTrimTile extends Component {
     render() {
         return (
             <Cell columns='2'>
-                <Card>
+                <Card onClick={() => this.props.onClick()}>
                     <CardPrimaryContent>
                         <CardMedia wide imageUrl='https://st.motortrend.com/uploads/sites/10/2018/01/2018-Toyota-Corolla-ECO-front-three-quarter.jpg'/>
                         <Headline6>{`${this.props.trimInfo.brand} ${this.props.trimInfo.model} ${this.props.trimInfo.trim}`}</Headline6>
@@ -30,6 +30,7 @@ export class CarTrimTile extends Component {
 
 // propTypes
 CarTrimTile.propTypes = {
+    onClick: PropTypes.func.isRequired,
     trimInfo: PropTypes.object.isRequired
 };
 
