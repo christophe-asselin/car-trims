@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d6c3facc05272dd04da61a9e6b5458ea",
+    "revision": "1cac383c11262252746fba5b445876e3",
     "url": "/car-trims/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car-trims/static/css/2.95b38104.chunk.css"
   },
   {
-    "revision": "edf3292bfedecda8b788",
+    "revision": "e6abb38e0327c007793d",
     "url": "/car-trims/static/css/main.25ab1c48.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car-trims/static/js/2.773290e5.chunk.js"
   },
   {
-    "revision": "edf3292bfedecda8b788",
-    "url": "/car-trims/static/js/main.62335f05.chunk.js"
+    "revision": "e6abb38e0327c007793d",
+    "url": "/car-trims/static/js/main.08c376bd.chunk.js"
   },
   {
     "revision": "a23640338dba77e84523",
