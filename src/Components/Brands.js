@@ -12,6 +12,14 @@ export class Brands extends Component {
     state = {
         brands: []
     };
+
+    getBrands = () => {
+        axios.get(BRANDS_API_URL).then(brands => {
+            this.setState({ brands: brands.data });
+        }).catch(e => {
+            console.error('Error while getting maker info: ' + e);
+        });
+    };
     
     renderImageTiles = () => {
         return this.state.brands.map(brand => (
@@ -24,11 +32,11 @@ export class Brands extends Component {
     };
 
     componentDidMount() {
-        axios.get(BRANDS_API_URL).then(brands => {
-            this.setState({ brands: brands.data });
-        }).catch(e => {
-            console.error('Error while getting maker info: ' + e);
-        });
+        this.getBrands();
+    }
+
+    componentDidUpdate() {
+        this.getBrands();
     }
 
     render() {
