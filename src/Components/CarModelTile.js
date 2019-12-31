@@ -12,17 +12,18 @@ import '@material/react-typography/dist/typography.css';
 
 export class CarModelTile extends Component {
     render() {
+        const last_year = this.props.modelInfo.last_year === null ? 'now' : this.props.modelInfo.last_year;
         return (
             <Cell columns='2'>
                 <Card
                 onClick={() =>
-                    this.props.handleClick(this.props.modelInfo.model, this.props.modelInfo.brand, this.props.modelInfo.generation)
+                    this.props.handleClick(this.props.modelInfo.model_name, this.props.modelInfo.maker_name, this.props.modelInfo.generation_no)
                 }>
                     <CardPrimaryContent>
-                        <CardMedia wide imageUrl='https://st.motortrend.com/uploads/sites/10/2018/01/2018-Toyota-Corolla-ECO-front-three-quarter.jpg'/>
-                        <Headline6>{this.props.modelInfo.brand + ' ' + this.props.modelInfo.model}</Headline6>
+                        <CardMedia wide imageUrl={this.props.modelInfo.img_url}/>
+                        <Headline6>{this.props.modelInfo.maker_name + ' ' + this.props.modelInfo.model_name}</Headline6>
                         <Subtitle2>{
-                            `Gen. ${this.props.modelInfo.generation} (${this.props.modelInfo.startYear} - ${this.props.modelInfo.endYear})`
+                            `Gen. ${this.props.modelInfo.generation_no} (${this.props.modelInfo.first_year} - ${last_year})`
                         }</Subtitle2>
                     </CardPrimaryContent>
                 </Card>

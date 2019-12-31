@@ -3,24 +3,36 @@ import PropTypes from 'prop-types';
 import {Grid, Row} from '@material/react-layout-grid';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import CarModelTile from './CarModelTile';
+import axios from 'axios';
 
-const models = [
-    { brand: 'Honda', model: 'Civic', generation: 10, startYear: 2016, endYear: 2019 },
-    { brand: 'Honda', model: 'Civic', generation: 9, startYear: 2011, endYear: 2015 },
-    { brand: 'Toyota', model: 'Corolla', generation: 12, startYear: 2018, endYear: 2019 },
-    { brand: 'Toyota', model: 'Corolla', generation: 11, startYear: 2012, endYear: 2019 }
-];
+const MODELS_API_BASE_URL = 'http://localhost:5000/models';
 
 export class CarModels extends Component {
+
+    state = {
+        models: []
+    };
+
     renderModelTiles = () => {
-        return models.filter(model => this.props.brand ? model.brand === this.props.brand : true).map(model => (
+        return this.state.models.filter(model => this.props.brand ? model.maker_name === this.props.brand : true).map(model => (
             <CarModelTile
-            key={`${model.brand}-${model.model}-${model.generation}`}
+            key={model.id}
             modelInfo={model}
             handleClick={this.props.handleModelSelect}
             />
         ));
     };
+
+    componentDidMount() {
+        // restrict to certain brand if brand was selected
+        const url = this.props.brand ? MODELS_API_BASE_URL + '/maker/' + this.props.brand : MODELS_API_BASE_URL;
+        axios.get(url).then((models) => {
+            console.log(models.data);
+            this.setState({ models: models.data });
+        }).catch((e) => {
+            console.error('Error while getting models: ' + e);
+        });
+    }
 
     render() {
         return (

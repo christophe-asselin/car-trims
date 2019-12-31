@@ -11,10 +11,10 @@ export class Brands extends Component {
 
     state = {
         brands: []
-    }
+    };
     
     renderImageTiles = () => {
-        return this.state.brands.map((brand) => (
+        return this.state.brands.map(brand => (
             <BrandTile
             key={brand.maker_name}
             name={brand.maker_name}
@@ -24,9 +24,9 @@ export class Brands extends Component {
     };
 
     componentDidMount() {
-        axios.get(BRANDS_API_URL).then((brands) => {
+        axios.get(BRANDS_API_URL).then(brands => {
             this.setState({ brands: brands.data });
-        }).catch((e) => {
+        }).catch(e => {
             console.error('Error while getting maker info: ' + e);
         });
     }
