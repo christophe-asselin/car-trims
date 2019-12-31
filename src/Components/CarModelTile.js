@@ -17,7 +17,7 @@ export class CarModelTile extends Component {
             <Cell columns='2'>
                 <Card
                 onClick={() =>
-                    this.props.handleClick(this.props.modelInfo.model_name, this.props.modelInfo.maker_name, this.props.modelInfo.generation_no)
+                    this.props.handleClick(this.props.modelInfo.id, this.props.modelInfo.maker_name)
                 }>
                     <CardPrimaryContent>
                         <CardMedia wide imageUrl={this.props.modelInfo.img_url}/>

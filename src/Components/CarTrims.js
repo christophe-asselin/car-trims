@@ -4,30 +4,45 @@ import {Grid, Row} from '@material/react-layout-grid';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import CarTrimTile from './CarTrimTile';
 import TrimInfo from './TrimInfo';
+import axios from 'axios';
+ 
+const TRIMS_API_BASE_URL = 'http://localhost:5000/trims';
 
-const trims = [
-    { brand: 'Honda', model: 'Civic', trim: 'Si', generation: 10, startYear: 2016, endYear: 2019 },
-    { brand: 'Toyota', model: 'Corolla', trim: 'L', generation: 11, startYear: 2012, endYear: 2019 },
-    { brand: 'Toyota', model: 'Corolla', trim: 'LE', generation: 11, startYear: 2012, endYear: 2019 },
-    { brand: 'Toyota', model: 'Corolla', trim: 'LE Eco', generation: 11, startYear: 2012, endYear: 2019 },
-    { brand: 'Toyota', model: 'Corolla', trim: 'S', generation: 11, startYear: 2012, endYear: 2019 }
-];
+// const trims = [
+//     { brand: 'Honda', model: 'Civic', trim: 'Si', generation: 10, startYear: 2016, endYear: 2019 },
+//     { brand: 'Toyota', model: 'Corolla', trim: 'L', generation: 11, startYear: 2012, endYear: 2019 },
+//     { brand: 'Toyota', model: 'Corolla', trim: 'LE', generation: 11, startYear: 2012, endYear: 2019 },
+//     { brand: 'Toyota', model: 'Corolla', trim: 'LE Eco', generation: 11, startYear: 2012, endYear: 2019 },
+//     { brand: 'Toyota', model: 'Corolla', trim: 'S', generation: 11, startYear: 2012, endYear: 2019 }
+// ];
 
 export class CarTrims extends Component {
-    state = { trimInfoVisisble: 'hidden' }
+    state = {
+        trimInfoVisible: 'hidden',
+        trims: []
+    };
 
-    showTrimInfo = () => this.setState({ trimInfoVisisble: 'visible' });
+    showTrimInfo = () => this.setState({ trimInfoVisible: 'visible' });
 
-    hideTrimInfo = () => this.setState({ trimInfoVisisble: 'hidden' });
+    hideTrimInfo = () => this.setState({ trimInfoVisible: 'hidden' });
+
+    getTrims = () => {
+        // restrict to certain brand if brand was selected
+        const url = this.props.modelId === -1 ? TRIMS_API_BASE_URL : TRIMS_API_BASE_URL + '/model/' + this.props.modelId;
+        axios.get(url).then(trims => {
+            this.setState({
+                trimInfoVisible: this.state.trimInfoVisible,
+                trims: trims.data
+            });
+        }).catch(e => {
+            console.error('Error while getting trims: ' + e);
+        });
+    };
 
     renderCarTrimTiles = () => {
-        return trims.filter(
-                trim => this.props.model ?
-                    (this.props.model === trim.model && this.props.brand === trim.brand && this.props.generation === trim.generation) :
-                    true
-            ).map(trim => (
+        return this.state.trims.map(trim => (
                 <CarTrimTile
-                key={`${trim.brand}-${trim.model}-${trim.generation}-${trim.trim}`}
+                key={trim.id}
                 trimInfo={trim}
                 onClick={this.showTrimInfo}
                 />
@@ -35,12 +50,20 @@ export class CarTrims extends Component {
         );
     };
 
+    componentDidMount() {
+        this.getTrims();
+    }
+
+    componentDidUpdate() {
+        this.getTrims();
+    }
+
     render() {
         return (
             <div>
                 <TrimInfo
                 id={0}
-                visible={this.state.trimInfoVisisble}
+                visible={this.state.trimInfoVisible}
                 onClose={this.hideTrimInfo}/>
                 <Grid>
                     <Row>
@@ -53,9 +76,7 @@ export class CarTrims extends Component {
 }
 
 CarTrims.propTypes = {
-    brand: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    generation: PropTypes.number.isRequired
+    modelId: PropTypes.number.isRequired,
 };
 
 export default CarTrims;

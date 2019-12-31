@@ -24,8 +24,7 @@ class App extends Component {
         selectedIndex: 0,
         open: false,
         selectedBrand: '',
-        selectedModel: '',
-        selectedGeneration: -1
+        selectedModelId: -1
     };
 
     toggle = () => {
@@ -33,8 +32,7 @@ class App extends Component {
             selectedIndex: this.state.selectedIndex,
             open: !this.state.open,
             selectedBrand: this.state.selectedBrand,
-            selectedModel: this.state.selectedModel,
-            selectedGeneration: this.state.selectedGeneration
+            selectedModelId: this.state.selectedModelId
         });
     };
 
@@ -43,8 +41,7 @@ class App extends Component {
             selectedIndex: 0,
             open: false,
             selectedBrand: '',
-            selectedModel: '',
-            selectedGeneration: -1
+            selectedModelId: -1
         });
     };
 
@@ -53,8 +50,7 @@ class App extends Component {
             selectedIndex: selectedIndex,
             open: false,
             selectedBrand: '',
-            selectedModel: '',
-            selectedGeneration: -1
+            selectedModelId: -1
         });
     };
 
@@ -63,18 +59,16 @@ class App extends Component {
             selectedIndex: 2,
             open: false,
             selectedBrand: brand,
-            selectedModel: '',
-            selectedGeneration: -1
+            selectedModelId: -1
         });
     };
 
-    handleModelSelect = (model, brand, generation) => {
+    handleModelSelect = (modelId, brand) => {
         this.setState({
             selectedIndex: 3,
             open: false,
             selectedBrand: brand,
-            selectedModel: model,
-            selectedGeneration: generation
+            selectedModelId: modelId
         });
     }
 
@@ -88,8 +82,7 @@ class App extends Component {
                 return (
                     <CarTrims
                     brand={this.state.selectedBrand}
-                    model={this.state.selectedModel}
-                    generation={this.state.selectedGeneration}
+                    modelId={this.state.selectedModelId}
                     />
                 );
             case 4:

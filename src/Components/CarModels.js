@@ -13,8 +13,19 @@ export class CarModels extends Component {
         models: []
     };
 
+    getModels = () => {
+        // restrict to certain brand if brand was selected
+        const url = this.props.brand ? MODELS_API_BASE_URL + '/maker/' + this.props.brand : MODELS_API_BASE_URL;
+        axios.get(url).then((models) => {
+            console.log(models.data);
+            this.setState({ models: models.data });
+        }).catch((e) => {
+            console.error('Error while getting models: ' + e);
+        });
+    };
+
     renderModelTiles = () => {
-        return this.state.models.filter(model => this.props.brand ? model.maker_name === this.props.brand : true).map(model => (
+        return this.state.models.map(model => (
             <CarModelTile
             key={model.id}
             modelInfo={model}
@@ -24,14 +35,11 @@ export class CarModels extends Component {
     };
 
     componentDidMount() {
-        // restrict to certain brand if brand was selected
-        const url = this.props.brand ? MODELS_API_BASE_URL + '/maker/' + this.props.brand : MODELS_API_BASE_URL;
-        axios.get(url).then((models) => {
-            console.log(models.data);
-            this.setState({ models: models.data });
-        }).catch((e) => {
-            console.error('Error while getting models: ' + e);
-        });
+        this.getModels();
+    }
+
+    componentDidUpdate() {
+        this.getModels();
     }
 
     render() {
