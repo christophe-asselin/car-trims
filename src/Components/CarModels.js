@@ -17,7 +17,6 @@ export class CarModels extends Component {
         // restrict to certain brand if brand was selected
         const url = this.props.brand ? MODELS_API_BASE_URL + '/maker/' + this.props.brand : MODELS_API_BASE_URL;
         axios.get(url).then((models) => {
-            console.log(models.data);
             this.setState({ models: models.data });
         }).catch((e) => {
             console.error('Error while getting models: ' + e);
