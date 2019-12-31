@@ -15,7 +15,10 @@ export class Brands extends Component {
 
     getBrands = () => {
         axios.get(BRANDS_API_URL).then(brands => {
-            this.setState({ brands: brands.data });
+            const sortedBrands = brands.data.sort((a,b) => {
+                return (a.maker_name > b.maker_name) ? 1 : ((b.maker_name > a.maker_name) ? -1 : 0)
+            });
+            this.setState({ brands: sortedBrands });
         }).catch(e => {
             console.error('Error while getting maker info: ' + e);
         });
