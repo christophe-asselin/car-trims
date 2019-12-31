@@ -3,29 +3,33 @@ import PropTypes from 'prop-types';
 import {Grid, Row} from '@material/react-layout-grid';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import BrandTile from './BrandTile';
+import axios from 'axios';
 
-const brands = [
-    { name: 'Honda', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Toyota', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Ford', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Chevrolet', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Jeep', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'Mercedes-Benz', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: 'BMW', logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' },
-    { name: "Porsche", logoUrl: 'https://www.carlogos.org/logo/Honda-logo-1920x1080.png' }
-];
+const BRANDS_API_URL = 'http://localhost:5000/makers';
 
 export class Brands extends Component {
+
+    state = {
+        brands: []
+    }
     
     renderImageTiles = () => {
-        return brands.map((brand) => (
+        return this.state.brands.map((brand) => (
             <BrandTile
-            key={brand.name}
-            name={brand.name}
-            logoUrl={brand.logoUrl}
+            key={brand.maker_name}
+            name={brand.maker_name}
+            logoUrl={brand.logo_url}
             handleClick={this.props.handleBrandSelect}/>
         ));
     };
+
+    componentDidMount() {
+        axios.get(BRANDS_API_URL).then((brands) => {
+            this.setState({ brands: brands.data });
+        }).catch((e) => {
+            console.error('Error while getting maker info: ' + e);
+        });
+    }
 
     render() {
         return (
